@@ -36,4 +36,5 @@ async def on_member_remove(member: discord.Member):
         await ch.send(embed=create_welcome_embed(member, False))
 
 
-bot.run(config["token"].get(str))
+def main():
+    bot.run(config["token"].get(str))
