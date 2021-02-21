@@ -1,7 +1,7 @@
 import discord
 from discord.channel import TextChannel
 from discord.ext import commands
-from .util import create_welcome_embed
+from .util import create_welcome_embed, create_stats_embed
 from .bot import bot
 from .config import config
 
@@ -13,9 +13,14 @@ async def on_ready():
         name="Heimsnet tickets", type=discord.ActivityType.watching))
 
 
+@bot.command(name="stats")
+async def stats(ctx: commands.Context):
+    await ctx.send(create_stats_embed(ctx))
+
+
 @bot.command(name="hello")
-async def hello(message: discord.Message):
-    await message.channel.send("Hello world!")
+async def hello(ctx: commands.Context):
+    await ctx.send("Hello world!")
 
 
 @bot.event
